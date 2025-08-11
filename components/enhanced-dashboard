@@ -1,0 +1,63 @@
+import * as React from "react"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+
+export interface EnhancedDashboardProps {
+  title?: string
+  subtitle?: string
+  children?: React.ReactNode
+}
+
+export function EnhancedDashboard({
+  title = "Dashboard",
+  subtitle,
+  children,
+}: EnhancedDashboardProps) {
+  return (
+    <section className="w-full space-y-4">
+      <Card className="border border-border">
+        <CardHeader>
+          <CardTitle className="text-lg md:text-xl">{title}</CardTitle>
+          {subtitle ? (
+            <p className="text-sm text-muted-foreground">{subtitle}</p>
+          ) : null}
+        </CardHeader>
+        <CardContent>
+          <div className="text-sm text-muted-foreground">
+            {'This is a placeholder for the enhanced dashboard.'}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Separator />
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">{'Overview'}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-sm text-muted-foreground">
+              {'Add your overview widgets here.'}
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">{'Insights'}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-sm text-muted-foreground">
+              {'Add KPIs or charts here.'}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {children ? <div className="mt-2">{children}</div> : null}
+    </section>
+  )
+}
+
+export default EnhancedDashboard
